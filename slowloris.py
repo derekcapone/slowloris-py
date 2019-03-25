@@ -31,7 +31,7 @@ def socket_init(ip, port):
     :return: socket if connection made, 0 otherwise
     """
     try:
-        message = "GET / HTTP/1.1\r\nHost: frpi.ddns.net\r\n\r\n"
+        message = "GET / HTTP/1.1\r\nHost: frpi.ddns.net\r\n"
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(4)
         sock.connect((ip, port))
