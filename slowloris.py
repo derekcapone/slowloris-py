@@ -18,7 +18,7 @@ def make_connections(active_conn, num_conn):
         if sock is not 0:
             conn_list += [sock]
         else:
-            break  # connections are being refused
+            break  # new connections are being refused
 
     return conn_list
 
