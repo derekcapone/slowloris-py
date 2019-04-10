@@ -1,5 +1,7 @@
 import socket
 import datetime
+import time
+import matplotlib.pyplot as plt
 
 
 def send_request():
@@ -29,8 +31,26 @@ def test_connection():
 
 
 def main():
-    secs = test_connection()
-    print(secs)
+    delay_secs = 2
+    num_tests = 20  # number of times to test connection
+    times = []
+    delays = []
+
+    for i in range(0, num_tests):
+        times += [datetime.datetime.now()]
+        delay = test_connection()
+        print(delay)
+        delays += [delay]
+
+        time.sleep(delay_secs)
+
+    plt.plot(times, delays)
+    plt.xlim([times[0], times[num_tests-1]])
+    plt.ylim([0, 15])
+    plt.xlabel('Time of test')
+    plt.ylabel('Seconds to respond')
+    plt.title("Regular Server Response Time")
+    plt.show()
 
 
 if __name__ == '__main__':
